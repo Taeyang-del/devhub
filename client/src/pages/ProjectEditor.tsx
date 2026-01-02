@@ -132,7 +132,7 @@ export default function ProjectEditor() {
       <div className="container py-12">
         <div className="max-w-2xl mx-auto">
           <h1 className="text-4xl font-bold mb-2">
-            {isEditing ? "Edit Project" : "Create New Project"}
+            {isEditing ? "Edit Project" : "Create your Project"}
           </h1>
           <p className="text-lg text-muted-foreground mb-8">
             {isEditing
