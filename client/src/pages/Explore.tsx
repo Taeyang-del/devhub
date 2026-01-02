@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -11,6 +11,7 @@ import { Star, Eye, Code2, Search, Filter } from "lucide-react";
 const POPULAR_LANGUAGES = ["JavaScript", "Python", "TypeScript", "React", "Node.js", "Go", "Rust"];
 
 export default function Explore() {
+  const [, setLocation] = useLocation();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
   const [sortBy, setSortBy] = useState<"stars" | "recent">("stars");
@@ -50,6 +51,9 @@ export default function Explore() {
       {/* Header */}
       <div className="border-b border-border/40 bg-muted/30">
         <div className="container py-12">
+          <Button variant="ghost" size="sm" onClick={() => setLocation("/")} className="mb-4">
+            ← Back
+          </Button>
           <h1 className="text-4xl font-bold mb-4">Explore Projects</h1>
           <p className="text-lg text-muted-foreground mb-8">
             Discover amazing projects from developers around the world

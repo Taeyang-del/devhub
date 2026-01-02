@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard";
 import Explore from "./pages/Explore";
 import ProjectEditor from "./pages/ProjectEditor";
 import SnippetEditor from "./pages/SnippetEditor";
+import ProfileEdit from "./pages/ProfileEdit";
 
 function Router() {
   return (
@@ -24,6 +25,7 @@ function Router() {
       <Route path={"/dashboard/snippets/new"} component={SnippetEditor} />
       <Route path={"/dashboard/snippets/:snippetId/edit"} component={SnippetEditor} />
       <Route path={"/profile/:userId"} component={Profile} />
+      <Route path={"/profile/:userId/edit"} component={ProfileEdit} />
       <Route path={"/projects/:projectId"} component={ProjectDetail} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}

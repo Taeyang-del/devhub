@@ -85,8 +85,10 @@ export default function Profile() {
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/5">
       {/* Header */}
       <div className="border-b border-border/40 bg-muted/30">
-        <div className="container py-8">
-          <div className="flex flex-col md:flex-row gap-8 items-start md:items-end">
+        <div className="container py-12">
+          <Button variant="ghost" size="sm" onClick={() => setLocation("/")} className="mb-4">
+            ← Back
+          </Button>          <div className="flex flex-col md:flex-row gap-8 items-start md:items-end">
             <Avatar className="h-32 w-32 border-4 border-accent/20">
               <AvatarImage src={profile?.avatarUrl || ""} />
               <AvatarFallback className="text-2xl">{initials}</AvatarFallback>

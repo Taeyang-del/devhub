@@ -103,3 +103,9 @@
 ## Bug Fixes
 - [x] Fix nested anchor tag errors in Home.tsx footer
 - [x] Fix nested anchor tag errors in all Link components across pages
+
+## Recent Fixes
+- [x] Add back buttons to Dashboard page
+- [x] Add back buttons to Explore page
+- [x] Add back buttons to Profile page
+- [x] Create profile edit page and fix 404 error

@@ -52,6 +52,11 @@ export default function Dashboard() {
       {/* Header */}
       <div className="border-b border-border/40 bg-muted/30">
         <div className="container py-8">
+          <div className="flex items-center gap-4 mb-4">
+            <Button variant="ghost" size="sm" onClick={() => setLocation("/")}>
+              ← Back
+            </Button>
+          </div>
           <h1 className="text-4xl font-bold mb-2">Dashboard</h1>
           <p className="text-lg text-muted-foreground">Manage your projects, snippets, and profile</p>
         </div>
