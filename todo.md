@@ -109,3 +109,6 @@
 - [x] Add back buttons to Explore page
 - [x] Add back buttons to Profile page
 - [x] Create profile edit page and fix 404 error
+
+## Current Issues
+- [x] Fix /dashboard/settings/profile 404 error - created settings page
