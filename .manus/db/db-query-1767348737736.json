@@ -1,0 +1,15 @@
+{
+  "query": "SELECT id, title, liveUrl FROM projects LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user hVeTxmWF19QHFfa.1809e6c1f4f2 --database 7DSeo7pu2Ldq7EPKPnzRLq --execute SELECT id, title, liveUrl FROM projects LIMIT 5;",
+  "rows": [
+    {
+      "id": "1",
+      "title": "devhub-Official",
+      "liveUrl": "devhub-7dseo7pu.manus.space"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tliveUrl\n1\tdevhub-Official\tdevhub-7dseo7pu.manus.space\n",
+  "stderr": "",
+  "execution_time_ms": 1649
+}

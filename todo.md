@@ -116,3 +116,6 @@
 ## New Pages to Create
 - [x] Create /developers page for discovering developers
 - [x] Create /snippets page for discovering code snippets
+
+## Bug Reports
+- [x] Fix live demo URL rendering - updated demo project with real URL
