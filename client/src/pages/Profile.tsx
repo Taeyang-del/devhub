@@ -152,7 +152,7 @@ export default function Profile() {
 
               <div className="flex gap-2">
                 {isOwnProfile ? (
-                  <Button onClick={() => setLocation("/dashboard/settings")}>Edit Profile</Button>
+                  <Button onClick={() => setLocation("/dashboard/settings/profile")}>Edit Profile</Button>
                 ) : (
                   <Button onClick={handleFollowToggle} variant={isFollowing ? "outline" : "default"}>
                     {isFollowing ? "Following" : "Follow"}
