@@ -14,12 +14,16 @@ import ProjectEditor from "./pages/ProjectEditor";
 import SnippetEditor from "./pages/SnippetEditor";
 import ProfileEdit from "./pages/ProfileEdit";
 import DashboardSettingsProfile from "./pages/DashboardSettingsProfile";
+import Developers from "./pages/Developers";
+import Snippets from "./pages/Snippets";
 
 function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
       <Route path={"/explore"} component={Explore} />
+      <Route path={"/developers"} component={Developers} />
+      <Route path={"/snippets"} component={Snippets} />
       <Route path={"/dashboard"} component={Dashboard} />
       <Route path={"/dashboard/projects/new"} component={ProjectEditor} />
       <Route path={"/dashboard/projects/:projectId/edit"} component={ProjectEditor} />

@@ -112,3 +112,7 @@
 
 ## Current Issues
 - [x] Fix /dashboard/settings/profile 404 error - created settings page
+
+## New Pages to Create
+- [x] Create /developers page for discovering developers
+- [x] Create /snippets page for discovering code snippets
