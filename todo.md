@@ -99,3 +99,7 @@
 - [ ] Final testing and bug fixes
 - [ ] Create checkpoint for deployment
 - [ ] Deploy to production
+
+## Bug Fixes
+- [x] Fix nested anchor tag errors in Home.tsx footer
+- [x] Fix nested anchor tag errors in all Link components across pages

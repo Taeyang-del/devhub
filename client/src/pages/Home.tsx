@@ -3,10 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { getLoginUrl } from "@/const";
 import { Code2, Zap, Users, Star, Share2, Search, ArrowRight } from "lucide-react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 
 export default function Home() {
   const { user, isAuthenticated } = useAuth();
+  const [, setLocation] = useLocation();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/5">
@@ -20,12 +21,12 @@ export default function Home() {
           <div className="flex items-center gap-4">
             {isAuthenticated ? (
               <>
-                <Link href="/dashboard">
-                  <Button variant="ghost">Dashboard</Button>
-                </Link>
-                <Link href={`/profile/${user?.id}`}>
-                  <Button variant="outline">Profile</Button>
-                </Link>
+                <Button variant="ghost" onClick={() => setLocation("/dashboard")}>
+                  Dashboard
+                </Button>
+                <Button variant="outline" onClick={() => setLocation(`/profile/${user?.id}`)}>
+                  Profile
+                </Button>
               </>
             ) : (
               <a href={getLoginUrl()}>
@@ -53,16 +54,12 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
             {isAuthenticated ? (
               <>
-                <Link href="/dashboard">
-                  <Button size="lg" className="gap-2">
-                    Go to Dashboard <ArrowRight className="h-4 w-4" />
-                  </Button>
-                </Link>
-                <Link href="/explore">
-                  <Button size="lg" variant="outline">
-                    Explore Projects
-                  </Button>
-                </Link>
+                <Button size="lg" className="gap-2" onClick={() => setLocation("/dashboard")}>
+                  Go to Dashboard <ArrowRight className="h-4 w-4" />
+                </Button>
+                <Button size="lg" variant="outline" onClick={() => setLocation("/explore")}>
+                  Explore Projects
+                </Button>
               </>
             ) : (
               <>
@@ -71,11 +68,9 @@ export default function Home() {
                     Get Started <ArrowRight className="h-4 w-4" />
                   </Button>
                 </a>
-                <Link href="/explore">
-                  <Button size="lg" variant="outline">
-                    Browse Projects
-                  </Button>
-                </Link>
+                <Button size="lg" variant="outline" onClick={() => setLocation("/explore")}>
+                  Browse Projects
+                </Button>
               </>
             )}
           </div>
@@ -210,9 +205,9 @@ export default function Home() {
             <div>
               <h3 className="font-semibold mb-4">Product</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><Link href="/explore"><a className="hover:text-foreground transition">Explore</a></Link></li>
-                <li><Link href="/snippets"><a className="hover:text-foreground transition">Snippets</a></Link></li>
-                <li><Link href="/developers"><a className="hover:text-foreground transition">Developers</a></Link></li>
+                <li><Link href="/explore" className="hover:text-foreground transition">Explore</Link></li>
+                <li><Link href="/snippets" className="hover:text-foreground transition">Snippets</Link></li>
+                <li><Link href="/developers" className="hover:text-foreground transition">Developers</Link></li>
               </ul>
             </div>
             <div>

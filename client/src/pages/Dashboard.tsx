@@ -6,11 +6,12 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Code2, Plus, Star, Eye, Trash2, Edit2 } from "lucide-react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { useState } from "react";
 
 export default function Dashboard() {
   const { user } = useAuth();
+  const [, setLocation] = useLocation();
   const [activeTab, setActiveTab] = useState("projects");
 
   // Fetch user projects
@@ -70,12 +71,10 @@ export default function Dashboard() {
           <TabsContent value="projects" className="mt-8">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold">Your Projects</h2>
-              <Link href="/dashboard/projects/new">
-                <Button className="gap-2">
-                  <Plus className="h-4 w-4" />
-                  New Project
-                </Button>
-              </Link>
+              <Button className="gap-2" onClick={() => setLocation("/dashboard/projects/new")}>
+                <Plus className="h-4 w-4" />
+                New Project
+              </Button>
             </div>
 
             {projectsLoading ? (
@@ -89,9 +88,7 @@ export default function Dashboard() {
                 <CardContent className="flex flex-col items-center justify-center py-12">
                   <Code2 className="h-12 w-12 text-muted-foreground mb-4" />
                   <p className="text-muted-foreground mb-4">No projects yet</p>
-                  <Link href="/dashboard/projects/new">
-                    <Button>Create Your First Project</Button>
-                  </Link>
+                  <Button onClick={() => setLocation("/dashboard/projects/new")}>Create Your First Project</Button>
                 </CardContent>
               </Card>
             ) : (
@@ -134,17 +131,13 @@ export default function Dashboard() {
                           </div>
                         </div>
                         <div className="flex gap-2 pt-4 border-t border-border/40">
-                          <Link href={`/projects/${project.id}`} className="flex-1">
-                            <Button variant="outline" size="sm" className="w-full">
-                              View
-                            </Button>
-                          </Link>
-                          <Link href={`/dashboard/projects/${project.id}/edit`} className="flex-1">
-                            <Button variant="outline" size="sm" className="w-full gap-2">
-                              <Edit2 className="h-4 w-4" />
-                              Edit
-                            </Button>
-                          </Link>
+                          <Button variant="outline" size="sm" className="w-full flex-1" onClick={() => setLocation(`/projects/${project.id}`)}>
+                            View
+                          </Button>
+                          <Button variant="outline" size="sm" className="w-full flex-1 gap-2" onClick={() => setLocation(`/dashboard/projects/${project.id}/edit`)}>
+                            <Edit2 className="h-4 w-4" />
+                            Edit
+                          </Button>
                           <Button
                             variant="destructive"
                             size="sm"
@@ -166,12 +159,10 @@ export default function Dashboard() {
           <TabsContent value="snippets" className="mt-8">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold">Your Snippets</h2>
-              <Link href="/dashboard/snippets/new">
-                <Button className="gap-2">
-                  <Plus className="h-4 w-4" />
-                  New Snippet
-                </Button>
-              </Link>
+              <Button className="gap-2" onClick={() => setLocation("/dashboard/snippets/new")}>
+                <Plus className="h-4 w-4" />
+                New Snippet
+              </Button>
             </div>
 
             {snippetsLoading ? (
@@ -185,9 +176,7 @@ export default function Dashboard() {
                 <CardContent className="flex flex-col items-center justify-center py-12">
                   <Code2 className="h-12 w-12 text-muted-foreground mb-4" />
                   <p className="text-muted-foreground mb-4">No snippets yet</p>
-                  <Link href="/dashboard/snippets/new">
-                    <Button>Create Your First Snippet</Button>
-                  </Link>
+                  <Button onClick={() => setLocation("/dashboard/snippets/new")}>Create Your First Snippet</Button>
                 </CardContent>
               </Card>
             ) : (
@@ -228,17 +217,13 @@ export default function Dashboard() {
                           </div>
                         </div>
                         <div className="flex gap-2 pt-4 border-t border-border/40">
-                          <Link href={`/snippets/${snippet.id}`} className="flex-1">
-                            <Button variant="outline" size="sm" className="w-full">
-                              View
-                            </Button>
-                          </Link>
-                          <Link href={`/dashboard/snippets/${snippet.id}/edit`} className="flex-1">
-                            <Button variant="outline" size="sm" className="w-full gap-2">
-                              <Edit2 className="h-4 w-4" />
-                              Edit
-                            </Button>
-                          </Link>
+                          <Button variant="outline" size="sm" className="w-full flex-1" onClick={() => setLocation(`/snippets/${snippet.id}`)}>
+                            View
+                          </Button>
+                          <Button variant="outline" size="sm" className="w-full flex-1 gap-2" onClick={() => setLocation(`/dashboard/snippets/${snippet.id}/edit`)}>
+                            <Edit2 className="h-4 w-4" />
+                            Edit
+                          </Button>
                           <Button
                             variant="destructive"
                             size="sm"
@@ -307,9 +292,7 @@ export default function Dashboard() {
                 <CardDescription>Manage your profile information and preferences</CardDescription>
               </CardHeader>
               <CardContent>
-                <Link href="/dashboard/settings/profile">
-                  <Button>Edit Profile</Button>
-                </Link>
+                <Button onClick={() => setLocation("/dashboard/settings/profile")}>Edit Profile</Button>
               </CardContent>
             </Card>
           </TabsContent>

@@ -1,4 +1,4 @@
-import { useParams, Link } from "wouter";
+import { useParams, Link, useLocation } from "wouter";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
@@ -14,6 +14,7 @@ import { Streamdown } from "streamdown";
 export default function ProjectDetail() {
   const { projectId } = useParams<{ projectId: string }>();
   const { user: currentUser } = useAuth();
+  const [, setLocation] = useLocation();
   const [isStarred, setIsStarred] = useState(false);
 
   const projectIdNum = parseInt(projectId || "0");
@@ -69,9 +70,7 @@ export default function ProjectDetail() {
             <CardDescription>The project you're looking for doesn't exist.</CardDescription>
           </CardHeader>
           <CardContent>
-            <Link href="/">
-              <Button>Back to Home</Button>
-            </Link>
+            <Button onClick={() => setLocation("/")}>Back to Home</Button>
           </CardContent>
         </Card>
       </div>
@@ -278,11 +277,9 @@ export default function ProjectDetail() {
                   <CardTitle className="text-lg">Actions</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-2">
-                  <Link href={`/dashboard/projects/${project.id}/edit`}>
-                    <Button variant="outline" className="w-full">
-                      Edit Project
-                    </Button>
-                  </Link>
+                  <Button variant="outline" className="w-full" onClick={() => setLocation(`/dashboard/projects/${project.id}/edit`)}>
+                    Edit Project
+                  </Button>
                   <Button variant="destructive" className="w-full">
                     Delete Project
                   </Button>

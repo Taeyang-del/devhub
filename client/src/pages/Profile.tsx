@@ -1,4 +1,4 @@
-import { useParams, Link } from "wouter";
+import { useParams, Link, useLocation } from "wouter";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
@@ -12,6 +12,7 @@ import { useState } from "react";
 export default function Profile() {
   const { userId } = useParams<{ userId: string }>();
   const { user: currentUser } = useAuth();
+  const [, setLocation] = useLocation();
   const [isFollowing, setIsFollowing] = useState(false);
 
   const userIdNum = parseInt(userId || "0");
@@ -70,9 +71,7 @@ export default function Profile() {
             <CardDescription>The profile you're looking for doesn't exist.</CardDescription>
           </CardHeader>
           <CardContent>
-            <Link href="/">
-              <Button>Back to Home</Button>
-            </Link>
+            <Button onClick={() => setLocation("/")}>Back to Home</Button>
           </CardContent>
         </Card>
       </div>
@@ -151,9 +150,7 @@ export default function Profile() {
 
               <div className="flex gap-2">
                 {isOwnProfile ? (
-                  <Link href="/dashboard/settings">
-                    <Button>Edit Profile</Button>
-                  </Link>
+                  <Button onClick={() => setLocation("/dashboard/settings")}>Edit Profile</Button>
                 ) : (
                   <Button onClick={handleFollowToggle} variant={isFollowing ? "outline" : "default"}>
                     {isFollowing ? "Following" : "Follow"}
@@ -183,14 +180,12 @@ export default function Profile() {
       <section className="container py-12">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl font-bold">Projects</h2>
-          {isOwnProfile && (
-            <Link href="/dashboard/projects/new">
-              <Button size="sm" className="gap-2">
-                <Code2 className="h-4 w-4" />
-                New Project
-              </Button>
-            </Link>
-          )}
+              {isOwnProfile && (
+                <Button size="sm" className="gap-2" onClick={() => setLocation("/dashboard/projects/new")}>
+                  <Code2 className="h-4 w-4" />
+                  New Project
+                </Button>
+              )}
         </div>
 
         {projectsLoading ? (
@@ -204,11 +199,9 @@ export default function Profile() {
             <CardContent className="flex flex-col items-center justify-center py-12">
               <Code2 className="h-12 w-12 text-muted-foreground mb-4" />
               <p className="text-muted-foreground mb-4">No projects yet</p>
-              {isOwnProfile && (
-                <Link href="/dashboard/projects/new">
-                  <Button>Create Your First Project</Button>
-                </Link>
-              )}
+                  {isOwnProfile && (
+                    <Button onClick={() => setLocation("/dashboard/projects/new")}>Create Your First Project</Button>
+                  )}
             </CardContent>
           </Card>
         ) : (
